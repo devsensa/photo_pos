@@ -116,17 +116,59 @@ class Executor extends PropertyChangeNotifier {
     _shiftsService.changeShiftCorrectnessMark(action);
   }
 
-  Future<void> addProduct(AddProduct action) async {}
-  Future<void> removeProduct(RemoveProduct action) async {}
+  Future<void> addProduct(AddProduct action) async {
+  _productsService.addProduct(action);
+  }
+  
+  Future<void> removeProduct(RemoveProduct action) async {
+  
+    _productsService.removeProduct(action);
+  }
+  
+  
   Future<void> changeProductFavoriteMark(
-      ChangeProductFavoriteMark action) async {}
-  Future<void> changeProductTitle(ChangeProductTitle action) async {}
-  Future<void> changeProductAmount(ChangeProductAmount action) async {}
-  Future<void> changeProductPrice(ChangeProductPrice action) async {}
-  Future<void> addDeal(AddDeal action) async {}
-  Future<void> changeDealProduct(ChangeDealProduct action) async {}
-  Future<void> changeDealPaymentType(ChangeDealPaymentType action) async {}
-  Future<void> adjustDealPrice(AdjustDealPrice action) async {}
-  Future<void> prepareDeal(PrepareDeal action) async {}
-  Future<void> finishDeal(FinishDeal action) async {}
+      ChangeProductFavoriteMark action) async {
+      _productsService.changeProductFavoriteMark(action);
+      }
+      
+  Future<void> changeProductTitle(ChangeProductTitle action) async {
+  _productsService.changeProductTitle(action);
+  }
+  
+  Future<void> changeProductAmount(ChangeProductAmount action) async {
+  _productsService.changeProductAmount(action);
+  }
+  
+  Future<void> changeProductPrice(ChangeProductPrice action) async {
+  _productsService.changeProductPrice(action);
+  }
+  
+  Future<void> addDeal(AddDeal action) async {
+    _dealsService.addDeal(action);
+  }
+  
+  
+  Future<void> changeDealProduct(ChangeDealProduct action) async {
+  _dealsService.changeDealProduct(action);
+  }
+  
+  
+  Future<void> changeDealPaymentType(ChangeDealPaymentType action) async {
+  _dealsService.changeDealPaymentType(action);
+  }
+  
+  
+  Future<void> adjustDealPrice(AdjustDealPrice action) async {
+    _dealsService.adjustDealPrice(action);
+  }
+  
+  
+  Future<void> prepareDeal(PrepareDeal action) async {
+  _dealsService.prepareDeal(action);
+  }
+  
+  
+  Future<void> finishDeal(FinishDeal action) async {
+  _dealsService.finishDeal(action);
+  }
 }
