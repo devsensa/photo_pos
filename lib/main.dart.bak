@@ -1,0 +1,32 @@
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:flutter/foundation.dart'
+    show debugDefaultTargetPlatformOverride;
+import 'init.dart';
+
+void main() async {
+  // Init Hive
+  Hive.init("${Directory.current.path}/data");
+  // Init components
+  await init();
+  // Init app
+  // Override is necessary to prevent Unknown platform' flutter startup error.
+  debugDefaultTargetPlatformOverride = TargetPlatform.android;
+
+  runApp(MyApp());
+//  runApp(kiwi.Container().resolve<CameraTest>());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'POS App',
+      theme: ThemeData(),
+      initialRoute: "/",
+      routes: <String, WidgetBuilder>{},
+    );
+  }
+}
