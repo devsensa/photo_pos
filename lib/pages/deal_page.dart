@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "package:photo_pos/controls.dart";
+import 'package:photo_pos/controls/controls.dart';
 
 class DealPage extends StatelessWidget {
   Widget build(BuildContext context) {

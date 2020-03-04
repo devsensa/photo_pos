@@ -21,14 +21,14 @@ class Employee {
   @HiveField(6)
   final Money hourlyRate;
   @HiveField(7)
-  final double commission;
+  final Money commission;
 
   Employee(this.ref, this.email, this.passwordHash, this.role, this.firstName,
       this.lastName, this.hourlyRate, this.commission);
 
   Employee.create(String email, String passwordHash, String firstName)
       : this(Uuid().v4(), email, passwordHash, EmployeeRole.worker, firstName,
-            "", Money(0, Currency("USD")), 0.0);
+            "", Money(0, Currency("USD")), Money(0, Currency("USD")));
 
   bool get isManager {
     switch (role) {
@@ -55,11 +55,20 @@ class Employee {
     final _passwordHash = passwordHash ?? this.passwordHash;
     final _firstName = firstName ?? this.firstName;
     final _lastName = lastName ?? this.lastName;
-    final _hourlyRate = hourlyRate ?? this.hourlyRate;
-    final _commission = commission ?? this.commission;
+    final _hourlyRate =
+        Money.fromString(hourlyRate, Currency("USD")) ?? this.hourlyRate;
+    final _commission =
+        Money.fromString(commission, Currency("USD")) ?? this.commission;
     final _role = role ?? this.role;
-    return Employee(ref, _email, _passwordHash, _role, _firstName, _lastName,
-        _hourlyRate, _commission);
+    return Employee(
+        ref,
+        _email,
+        _passwordHash,
+        _role,
+        _firstName,
+        _lastName,
+        _hourlyRate,
+        _commission);
   }
 }
 

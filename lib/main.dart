@@ -1,34 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get_it/get_it.dart';
 
-import 'package:photo_pos/pages.dart';
-import "package:photo_pos/services.dart";
+import 'package:photo_pos/bootstrap/bootstrap.dart';
+import 'package:photo_pos/screens/screens.dart';
 
-void main() => runApp(MyApp());
+GetIt sl = GetIt.I;
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+void main() {
+  bootstrapApp(sl);
+  runApp(App());
+}
+
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final navigationService = NavigationService();
-    return Provider.value(
-      value: navigationService,
-      child: MaterialApp(
-        navigatorKey: navigationService.navigatorKey,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        initialRoute: "/home",
-        routes: <String, WidgetBuilder>{
-          "/": (context) => WelcomePage(),
-          "/home": (context) => HomePage(),
-          "/points-of-sale": (context) => PointsOfSalePage(),
-          "/pos": (context) => PosPage(),
-          "/settings": (context) => SettingsPage(),
-          "/deals": (context) => DealPage(),
-          "/staff": (context) => StaffPage(),
-          "/staff/employee": (context) => EmployeePage(),
+    return MaterialApp(
+      home: FutureBuilder(
+        future: sl.allReady(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return AppLoadingScreen();
+          } else {
+            return HomeScreen();
+          }
         },
       ),
     );

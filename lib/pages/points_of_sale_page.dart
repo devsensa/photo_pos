@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "package:photo_pos/controls.dart";
+import 'package:photo_pos/controls/controls.dart';
 
 class PointsOfSalePage extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class PointsOfSalePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showDialog(
+          showDialog<AlertDialog>(
             context: context,
             builder: (context) => AlertDialog(
               title: Text("New point-of-sale"),

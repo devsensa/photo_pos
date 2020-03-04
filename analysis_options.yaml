@@ -1,0 +1,15 @@
+include: package:effective_dart/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - lib/generated/i18n.dart
+    - build/**
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
+linter:
+  exclude:
+  rules:
+    - camel_case_types
+    prefer_relative_imports: false
