@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "package:photo_pos/controls.dart";
+import 'package:photo_pos/controls/controls.dart';
 
 class StaffPage extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class StaffPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          showDialog(
+          showDialog<AlertDialog>(
             context: context,
             builder: (context) => AlertDialog(
               title: Text("New employee"),

@@ -10,7 +10,8 @@ abstract class StorageService {
   Optional<Employee> get activeEmployee;
   Optional<Employee> employeeByRef(String employeeRef);
   Future<void> saveEmployee(Employee updatedEmployee);
-  Future<void> removeEmployee(employee);
+
+  Future<void> removeEmployee(Employee employee);
 
   Future<void> savePos(PointOfSale newPos);
   Future<void> removePos(PointOfSale pos);

@@ -53,7 +53,7 @@ class EmployeeAdapter extends TypeAdapter<Employee> {
       fields[4] as String,
       fields[5] as String,
       fields[6] as Money,
-      fields[7] as double,
+      fields[7] as Money,
     );
   }
 
